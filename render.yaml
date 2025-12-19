@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: n8n
+    env: docker
+    plan: starter
+    autoDeploy: true
+
+    disk:
+      name: n8n-data
+      mountPath: /var/data
+      sizeGB: 5
+
+    envVars:
+      - key: N8N_HOST
+        value: n8n-blgy.onrender.com
+      - key: N8N_PROTOCOL
+        value: https
+      - key: N8N_EDITOR_BASE_URL
+        value: https://n8n-blgy.onrender.com
+      - key: WEBHOOK_URL
+        value: https://n8n-blgy.onrender.com
+
+      - key: N8N_USER_FOLDER
+        value: /var/data/.n8n
+
+      - key: N8N_REINSTALL_MISSING_PACKAGES
+        value: "true"
